@@ -279,10 +279,10 @@ int main() {
                     if (save_contact(name, email)) {
                         printf("\n");
                         display_success("Your information has been saved successfully!");
-                        printf("%sThank you! We will contact you soon.%s\n", BRIGHT_CYAN, RESET);
+                        printf("%sThank you!.%s\n", BRIGHT_CYAN, RESET);
                     } else {
                         printf("\n");
-                        display_error("Failed to save your information. Please try again.");
+                        display_error("Failed to save. Please try again.");
                     }
                 } else {
                     printf("\n");
