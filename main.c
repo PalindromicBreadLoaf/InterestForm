@@ -237,14 +237,35 @@ int main() {
                 printf("%sPlease enter your information:%s\n\n", BOLD, RESET);
 
                 // Get name
-                get_input("Full Name: ", name, sizeof(name));
+                while (1) {
+                    get_input("Full Name: ", name, sizeof(name));
 
-                // Validate name
-                if (strlen(name) == 0) {
-                    printf("\n");
-                    display_error("Name cannot be empty.");
-                    wait_for_key();
-                    continue;
+                    // Validate name length
+                    if (strlen(name) == 0) {
+                        display_error("Name cannot be empty.");
+                        continue;
+                    }
+
+                    if (strlen(name) < 3) {
+                        display_error("Name must be at least 3 characters long.");
+                        continue;
+                    }
+
+                    // Check if name is all spaces
+                    int all_spaces = 1;
+                    for (int i = 0; name[i] != '\0'; i++) {
+                        if (name[i] != ' ') {
+                            all_spaces = 0;
+                            break;
+                        }
+                    }
+
+                    if (all_spaces) {
+                        display_error("Name cannot be only spaces.");
+                        continue;
+                    }
+
+                    break;
                 }
 
                 // Get email
